@@ -107,33 +107,34 @@ s.addText("How uncontrolled discounting erased $815K of profit at Global Superst
         + "Enterprise multi-modal data visualization & storytelling · November 24, 2026", { placeholder: "body" });
 s.addText("SETUP  →  CONFLICT  →  RESOLUTION", { x: 0.8, y: 6.3, w: 8, h: 0.4, fontSize: 14, bold: true,
           color: C.accent1, charSpacing: 4, margin: 0, isTextBox: true });
-notes(s, "Speaker 1 (Narrative lead). ~30 s. Open with the headline: sales nearly doubled but profit did not follow. Today we show why, and what to do.");
+notes(s, "JUAN PABLO (Narrative lead). ~30 s. Open with the headline: sales nearly doubled but profit did not follow. Today we show why, and what to do.");
 
 // ================================================================ 2. Team & arc
 s = pres.addSlide({ masterName: "CONTENT", sectionTitle: "Opening" });
-s.addText("Five roles, one data story", { placeholder: "title" });
+s.addText("Four people, five roles, one data story", { placeholder: "title" });
 const roles = [
-  ["Data Architect & Wrangler", "Acquisition, cleaning, imputation, star schema (pandas)"],
-  ["BI Dashboard Lead", "Interactive Dash dashboard: cross-filter, drill-down, date slicer"],
-  ["Python Viz Specialist", "Matplotlib, Seaborn & Plotly: distributions, CI, correlation"],
-  ["Narrative & Storytelling Lead", "Business framing, pre-attentive design, story arc"],
-  ["QA & Integration Lead", "GitHub, colour-blind palettes, 0-baseline checks, deck"],
+  ["Data Architect & Wrangler", "Kevin Axel Noh Ramirez", "Acquisition, cleaning, imputation, star schema"],
+  ["BI Dashboard Lead", "Kenny Rafael Peralta Morales", "Dash dashboard: cross-filter, drill-down, Railway"],
+  ["Python Viz Specialist", "Daniel Alberto Mendoza Dominguez", "Matplotlib, Seaborn & Plotly: distributions, CI"],
+  ["Narrative & Storytelling Lead", "Juan Pablo Enriquez Ruiz", "Business framing, story arc, recommendations"],
+  ["QA & Integration Lead", "Kevin Axel Noh Ramirez", "GitHub, colour-blind palettes, 0-baseline checks"],
 ];
 const roleColors = [C.accent2, C.accent5, C.accent6, C.accent1, C.accent4];
-roles.forEach(([r, d], i) => {
+roles.forEach(([r, who, d], i) => {
   const x = 0.6 + i * 2.46;
-  card(s, x, 1.5, 2.3, 2.9, r, d, roleColors[i], i + 1, true);
+  card(s, x, 1.5, 2.3, 3.3, r, [{ text: who, options: { bold: true, color: C.text1, breakLine: true } },
+                                { text: d }], roleColors[i], i + 1, true);
 });
 const arc = [["SETUP", "Context: +90% sales growth across 147 countries", C.accent2],
              ["CONFLICT / INSIGHT", "Margin flat; 1 in 4 order lines lose money — discounts are the cause", C.accent1],
              ["RESOLUTION", "Discount guardrails worth +$815K profit (+56%)", C.accent5]];
 arc.forEach(([h, b, col], i) => {
   const x = 0.6 + i * 4.1;
-  s.addText(h, { x, y: 4.8, w: 3.9, h: 0.4, fontSize: 14, bold: true, color: col, charSpacing: 2, margin: 0, isTextBox: true });
-  s.addText(b, { x, y: 5.25, w: 3.9, h: 1.0, fontSize: 15, color: C.text1, margin: 0, valign: "top", isTextBox: true });
-  if (i < 2) s.addText("→", { x: x + 3.75, y: 4.75, w: 0.4, h: 0.5, fontSize: 22, color: C.accent3, margin: 0, isTextBox: true });
+  s.addText(h, { x, y: 5.1, w: 3.9, h: 0.4, fontSize: 14, bold: true, color: col, charSpacing: 2, margin: 0, isTextBox: true });
+  s.addText(b, { x, y: 5.55, w: 3.9, h: 1.0, fontSize: 15, color: C.text1, margin: 0, valign: "top", isTextBox: true });
+  if (i < 2) s.addText("→", { x: x + 3.75, y: 5.05, w: 0.4, h: 0.5, fontSize: 22, color: C.accent3, margin: 0, isTextBox: true });
 });
-notes(s, "Speaker 1. ~40 s. Introduce each member and role (replace numbers with names). Explain the three-act arc. Timing plan: each member presents ~2 minutes.");
+notes(s, "JUAN PABLO. ~40 s. Introduce the team: Kevin (data + QA), Kenny (BI dashboard), Daniel (Python viz), Juan Pablo (narrative). Explain the three-act arc. Speaking order: Juan Pablo slides 1-2 and 11; Kevin 3-4 and 12; Daniel 5-7; Kenny 8-10 (~2.5 min each).");
 
 // ================================================================ 3. Setup — context
 pres.addSection({ title: "Setup" });
@@ -154,7 +155,7 @@ s.addTable([
   ["Geospatial", "Country, State, City, Region, Market", "ISO-3 codes for maps; postal code imputed as \"Not applicable\""],
 ], { x: 0.6, y: 3.6, w: 12.1, colW: [1.8, 4.6, 5.7], fontSize: 13, color: C.text1, fontFace: THEME.bodyFontFace,
      border: { type: "solid", pt: 0.5, color: "D5DAE0" }, rowH: 0.5, valign: "middle", margin: [0, 0.1, 0, 0.1] });
-notes(s, "Speaker 2 (Data Architect). ~60 s. Dataset: Global Superstore, 51,290 rows, mixes all four field types required. Cleaning: Latin-1 encoding, date parsing, 80% missing postal codes are structurally missing (only the US uses them) so we impute an explicit category instead of fake numbers. Export: star schema with 1 fact + 4 dimension tables.");
+notes(s, "KEVIN (Data Architect). ~60 s. Dataset: Global Superstore, 51,290 rows, mixes all four field types required. Cleaning: Latin-1 encoding, date parsing, 80% missing postal codes are structurally missing (only the US uses them) so we impute an explicit category instead of fake numbers. Export: star schema with 1 fact + 4 dimension tables.");
 
 // ================================================================ 4. Setup — sales vs margin
 s = pres.addSlide({ masterName: "CONTENT", sectionTitle: "Setup" });
@@ -165,7 +166,7 @@ s.addText([
   { text: "Growth is volume-driven: ", options: { bold: true } },
   { text: "every extra dollar of sales still returns only ~11-12 cents of profit. Two separate charts on purpose — never a dual axis — and bars start at 0." },
 ], { x: 0.6, y: 5.7, w: 12.1, h: 0.9, fontSize: 16, color: C.text1, margin: 0, valign: "top", isTextBox: true });
-notes(s, "Speaker 2. ~45 s. Setup ends with the organisational challenge: growth without margin improvement. Why? That is the conflict.");
+notes(s, "KEVIN. ~45 s. Setup ends with the organisational challenge: growth without margin improvement. Why? That is the conflict.");
 
 // ================================================================ 5. Conflict — losses
 pres.addSection({ title: "Conflict" });
@@ -176,7 +177,7 @@ stat(s, 0.6, 1.5, 3.6, "24%", "of order lines are sold at a loss (12,544 lines)"
 stat(s, 0.6, 3.2, 3.6, "$921K", "profit destroyed on loss-making lines", C.accent1);
 stat(s, 0.6, 4.9, 3.6, "100%", "of loss-making lines carried a discount", C.accent1);
 img(s, IMG("07_uncertainty_error_bars.png"), 4.6, 1.4, 8.1, 5.3, "Mean profit by discount band with 95% CI error bars");
-notes(s, "Speaker 3 (Python Viz Specialist). ~60 s. Error bars are bootstrap 95% confidence intervals. Above 20% discount, the mean profit per line is negative and the CI never crosses zero: this is a robust pattern, not noise.");
+notes(s, "DANIEL (Python Viz Specialist). ~60 s. Error bars are bootstrap 95% confidence intervals. Above 20% discount, the mean profit per line is negative and the CI never crosses zero: this is a robust pattern, not noise.");
 
 // ================================================================ 6. Conflict — distributions
 s = pres.addSlide({ masterName: "CONTENT", sectionTitle: "Conflict" });
@@ -186,7 +187,7 @@ img(s, IMG("04_dist_kde_margin_by_discount.png"), 0.6, 1.4, 8.4, 5.3, "KDE of pr
 card(s, 9.3, 1.5, 3.4, 1.55, "0% discount", "25.3% margin on $7.0M of sales", C.accent2);
 card(s, 9.3, 3.25, 3.4, 1.55, ">20% discount", "22% of lines, −$815K profit combined", C.accent1);
 card(s, 9.3, 5.0, 3.4, 1.55, "Spearman ρ = −0.67", "discount vs margin: the strongest driver in the data", C.accent3);
-notes(s, "Speaker 3. ~60 s. KDE plots show the full distribution shift. Sequential viridis palette because discount bands are ordered magnitudes. Spearman rank correlation is used because sales and profit are heavily skewed.");
+notes(s, "DANIEL. ~60 s. KDE plots show the full distribution shift. Sequential viridis palette because discount bands are ordered magnitudes. Spearman rank correlation is used because sales and profit are heavily skewed.");
 
 // ================================================================ 7. Conflict — relationships
 s = pres.addSlide({ masterName: "CONTENT", sectionTitle: "Conflict" });
@@ -196,14 +197,14 @@ img(s, IMG("09_bubble_discount_margin.png"), 0.6, 1.35, 7.4, 5.4, "Bubble chart 
 img(s, path.join(__dirname, "spearman_heatmap.png"), 8.2, 1.35, 4.5, 4.4, "Spearman correlation heatmap");
 s.addText("Discount vs profit margin: ρ = −0.67. Shipping cost just scales with sales (ρ = 0.91).", { x: 8.2, y: 5.85, w: 4.5, h: 0.9,
           fontSize: 14, color: C.text1, margin: 0, valign: "top", isTextBox: true });
-notes(s, "Speaker 3. ~45 s. Left: correlation matrix, diverging palette centred on 0. Right: interactive Plotly bubble chart (HTML version in the repo) — each bubble is a market x sub-category; size = sales. OLS trendline slopes down in every market.");
+notes(s, "DANIEL. ~45 s. Left: correlation matrix, diverging palette centred on 0. Right: interactive Plotly bubble chart (HTML version in the repo) — each bubble is a market x sub-category; size = sales. OLS trendline slopes down in every market.");
 
 // ================================================================ 8. Conflict — product
 s = pres.addSlide({ masterName: "CONTENT", sectionTitle: "Conflict" });
 tag(s, "CONFLICT / INSIGHT", C.accent1);
 s.addText("Tables: $757K in sales, −$64K in profit", { placeholder: "title" });
 img(s, IMG("01_amounts_subcategory.png"), 0.6, 1.4, 12.1, 5.4, "Sales and profit by sub-category, Tables highlighted in red");
-notes(s, "Speaker 4 (BI Dashboard Lead). ~40 s. Pre-attentive colour: everything in neutral or blue, only the loss in red. Tables is the only sub-category with negative profit; it is the 8th largest by sales.");
+notes(s, "KENNY (BI Dashboard Lead). ~40 s. Pre-attentive colour: everything in neutral or blue, only the loss in red. Tables is the only sub-category with negative profit; it is the 8th largest by sales.");
 
 // ================================================================ 9. Conflict — geography
 s = pres.addSlide({ masterName: "CONTENT", sectionTitle: "Conflict" });
@@ -211,7 +212,7 @@ tag(s, "CONFLICT / INSIGHT", C.accent1);
 s.addText("Losses concentrate in high-discount countries", { placeholder: "title" });
 img(s, IMG("10_choropleth_profit.png"), 0.6, 1.4, 6.6, 5.3, "Choropleth of profit by country");
 img(s, IMG("11_loss_countries.png"), 7.4, 1.4, 5.3, 5.3, "Ten most loss-making countries with average discount");
-notes(s, "Speaker 4. ~45 s. Geographic coordinate system with a diverging red-blue scale centred at zero. Turkey (−$98K) and Nigeria (−$81K) lead the losses; all 10 worst countries run average discounts of 35-51% vs 14% company-wide.");
+notes(s, "KENNY. ~45 s. Geographic coordinate system with a diverging red-blue scale centred at zero. Turkey (−$98K) and Nigeria (−$81K) lead the losses; all 10 worst countries run average discounts of 35-51% vs 14% company-wide.");
 
 // ================================================================ 10. Dashboard
 s = pres.addSlide({ masterName: "CONTENT", sectionTitle: "Conflict" });
@@ -234,7 +235,7 @@ s.addText([
     hyperlink: { url: "https://proyecto-final-database-production.up.railway.app" } } },
 ], { x: 8.5, y: 1.5, w: 4.2, h: 5.2, fontSize: 14, color: C.text1, margin: 0, valign: "top",
      paraSpaceAfter: 8, isTextBox: true });
-notes(s, "Speaker 4. ~75 s. LIVE DEMO: open https://proyecto-final-database-production.up.railway.app, click EMEA in the market bar to drill into countries, click Turkey, then click the >50% discount band. Explain why we picked an open-source BI tool (Option C).");
+notes(s, "KENNY. ~75 s. LIVE DEMO: open https://proyecto-final-database-production.up.railway.app, click EMEA in the market bar to drill into countries, click Turkey, then click the >50% discount band. Explain why we picked an open-source BI tool (Option C).");
 
 // ================================================================ 11. Resolution
 pres.addSection({ title: "Resolution" });
@@ -260,7 +261,7 @@ s.addText("+56% profit if lines currently discounted above 20% simply broke even
           fontSize: 14, color: C.background1, margin: 0, valign: "top", isTextBox: true });
 s.addText("Conservative: assumes no volume loss is recovered elsewhere and no further margin gain.", { x: 9.45, y: 5.0, w: 3.0, h: 1.2,
           fontSize: 12, italic: true, color: C.background2, margin: 0, valign: "top", isTextBox: true });
-notes(s, "Speaker 5 (QA & Integration lead). ~75 s. Deliver the recommendations. The what-if is a simple scenario: if the 22% of lines discounted above 20% had broken even instead of losing money, total profit would be $815K higher (+56%).");
+notes(s, "JUAN PABLO (Narrative lead). ~75 s. Deliver the recommendations. The what-if is a simple scenario: if the 22% of lines discounted above 20% had broken even instead of losing money, total profit would be $815K higher (+56%).");
 
 // ================================================================ 12. Close
 s = pres.addSlide({ masterName: "DARK_TITLE", sectionTitle: "Resolution" });
@@ -268,7 +269,7 @@ s.addText("Discount less, earn more", { placeholder: "title" });
 s.addText("Design & QA checklist applied: 0-baseline bars · log scale for skewed sales · Viridis sequential, RdBu diverging, "
         + "validated colour-blind-safe qualitative palette · no dual axes · decluttered grids & direct labels\n\n"
         + "Repo: github.com/KevSyndrome/proyecto-final-database\nDashboard: proyecto-final-database-production.up.railway.app\nQuestions?", { placeholder: "body" });
-notes(s, "Speaker 5. ~40 s. Wrap up: one sentence takeaway, mention accessibility checks and where the deliverables live, then open for questions.");
+notes(s, "KEVIN (QA & Integration lead). ~40 s. Wrap up: one sentence takeaway, mention accessibility checks and where the deliverables live, then open for questions.");
 
 (async () => {
   const out = path.join(__dirname, "Superstore_Executive_Deck.pptx");

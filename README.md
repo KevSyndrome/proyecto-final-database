@@ -43,8 +43,9 @@ Dash is free and cross-platform. The dashboard is plain Python, so it is version
 The star-schema CSVs in `data/processed/` load directly into Tableau or Power BI if you also want a `.twbx`/`.pbix`.
 
 ## Team roles
-1. Data Architect & Wrangler: notebook section 1, `data/processed/`
-2. BI Dashboard Lead: `dashboard/app.py`
-3. Python Visualization Specialist: notebook sections 2-8, `outputs/`
-4. Narrative & Storytelling Lead: deck story arc
-5. QA & Integration Lead: GitHub, accessibility checks, deck
+| Member | Role(s) | Presents slides |
+|---|---|---|
+| Kevin Axel Noh Ramirez | Data Architect & Wrangler · QA & Integration Lead | 3-4, 12 |
+| Kenny Rafael Peralta Morales | BI Dashboard Lead | 8-10 (live demo) |
+| Daniel Alberto Mendoza Dominguez | Python Visualization Specialist | 5-7 |
+| Juan Pablo Enriquez Ruiz | Narrative & Storytelling Lead | 1-2, 11 |
