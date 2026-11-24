@@ -5,6 +5,8 @@ Final project · Enterprise Multi-Modal Data Visualization & Storytelling (Nov 2
 and all of them carry a discount. Lines discounted above 20% lost **$815K**. Capping discounts at 20% would raise
 profit by about **+56%**.
 
+**Live dashboard:** https://proyecto-final-database-production.up.railway.app
+
 ## Deliverables
 | # | Deliverable | Location |
 |---|---|---|

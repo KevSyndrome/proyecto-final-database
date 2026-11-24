@@ -228,10 +228,13 @@ s.addText([
   { text: "Graphical rules: ", options: { bold: true } },
   { text: "0-baseline bars, diverging profit, CVD-safe colours", options: { breakLine: true } },
   { text: "Why open source (Option C): ", options: { bold: true } },
-  { text: "Plotly Dash is free, runs on Linux/Mac/Windows, version-controlled as code in GitHub, reproducible in a container" },
+  { text: "Plotly Dash is free, runs on Linux/Mac/Windows, version-controlled as code in GitHub, reproducible in a container", options: { breakLine: true } },
+  { text: "Live: ", options: { bold: true } },
+  { text: "open the dashboard on Railway", options: { color: C.accent2, underline: { style: "sng" },
+    hyperlink: { url: "https://proyecto-final-database-production.up.railway.app" } } },
 ], { x: 8.5, y: 1.5, w: 4.2, h: 5.2, fontSize: 14, color: C.text1, margin: 0, valign: "top",
      paraSpaceAfter: 8, isTextBox: true });
-notes(s, "Speaker 4. ~75 s. LIVE DEMO: open http://127.0.0.1:8050, click EMEA in the market bar to drill into countries, click Turkey, then click the >50% discount band. Explain why we picked an open-source BI tool (Option C).");
+notes(s, "Speaker 4. ~75 s. LIVE DEMO: open https://proyecto-final-database-production.up.railway.app, click EMEA in the market bar to drill into countries, click Turkey, then click the >50% discount band. Explain why we picked an open-source BI tool (Option C).");
 
 // ================================================================ 11. Resolution
 pres.addSection({ title: "Resolution" });
@@ -264,7 +267,7 @@ s = pres.addSlide({ masterName: "DARK_TITLE", sectionTitle: "Resolution" });
 s.addText("Discount less, earn more", { placeholder: "title" });
 s.addText("Design & QA checklist applied: 0-baseline bars · log scale for skewed sales · Viridis sequential, RdBu diverging, "
         + "validated colour-blind-safe qualitative palette · no dual axes · decluttered grids & direct labels\n\n"
-        + "Deliverables: GitHub repo · final_visualizations.ipynb · Dash dashboard · this deck\nQuestions?", { placeholder: "body" });
+        + "Repo: github.com/KevSyndrome/proyecto-final-database\nDashboard: proyecto-final-database-production.up.railway.app\nQuestions?", { placeholder: "body" });
 notes(s, "Speaker 5. ~40 s. Wrap up: one sentence takeaway, mention accessibility checks and where the deliverables live, then open for questions.");
 
 (async () => {
